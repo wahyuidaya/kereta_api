@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karcis Tiket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="karcis-tiket-page"> <!-- Tambahkan class karcis-tiket-page untuk identifikasi halaman -->
+    <header class="header">
+        <nav class="bilah-navigasi">
+            <div class="wadah">
+                <div class="logo">
+                    <a href="index.html">TiketKeretaApp</a>
+                </div>
+                <div class="tautan-navigasi">
+                    <a href="index2.html">Beranda</a>
+                    <a href="pesan_tiket.html">Pesan Tiket</a>
+                    <a href="#" class="logout-link">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="karcis-tiket">
+        <div class="header">
+            <h1>Tiket Kereta Api</h1>
+        </div>
+        <div class="info-tiket">
+            <div class="info-penumpang">
+                <h2>Informasi Penumpang</h2>
+                <p><strong>Nama Pemesan:</strong> <span id="namaPenumpang"></span></p>
+                <p><strong>Email:</strong> <span id="emailPenumpang"></span></p>
+                <p><strong>No. Telepon:</strong> <span id="teleponPenumpang"></span></p>
+                <p><strong>Alamat:</strong> <span id="alamatPenumpang"></span></p>
+            </div>
+            <div class="info-perjalanan">
+                <h2>Informasi Perjalanan</h2>
+                <p><strong>Tujuan:</strong> <span id="tujuan"></span></p>
+                <p><strong>Kelas:</strong> <span id="kelas"></span></p>
+                <p><strong>Tanggal Keberangkatan:</strong> <span id="tglKeberangkatan"></span></p>
+                <p><strong>Jam Keberangkatan:</strong> <span id="jamKeberangkatan"></span></p>
+                <p><strong>Tempat Duduk:</strong> <span id="tempatDuduk"></span></p>
+                <p><strong>Harga Tiket:</strong> <span id="hargaTiket"></span></p>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="printButton" onclick="printTicket()">Cetak Tiket</button>
+            <button id="completeButton" style="display:none;" onclick="goToHomePage()">Selesai</button>
+        </div>
+    </div>
+
+    <script>
+                 // Mengambil data dari localStorage dan menampilkannya di form karcis tiket
+                 document.getElementById('namaPenumpang').textContent = localStorage.getItem('namaPenumpang');
+        document.getElementById('emailPenumpang').textContent = localStorage.getItem('emailPenumpang');
+        document.getElementById('teleponPenumpang').textContent = localStorage.getItem('teleponPenumpang');
+        document.getElementById('alamatPenumpang').textContent = localStorage.getItem('alamatPenumpang');
+        document.getElementById('tujuan').textContent = localStorage.getItem('tujuan');
+        document.getElementById('kelas').textContent = localStorage.getItem('kelas');
+        document.getElementById('tglKeberangkatan').textContent = localStorage.getItem('tglKeberangkatan');
+        document.getElementById('jamKeberangkatan').textContent = localStorage.getItem('jamKeberangkatan');
+        document.getElementById('tempatDuduk').textContent = localStorage.getItem('tempatDuduk');
+        document.getElementById('hargaTiket').textContent = localStorage.getItem('hargaTiket');
+
+        function printTicket() {
+            window.print();
+            document.getElementById('printButton').style.display = 'none';
+            document.getElementById('completeButton').style.display = 'inline-block';
+            document.getElementById('successMessage').style.display = 'block';
+        }
+
+        function goToHomePage() {
+            window.location.href = 'index2.html';
+        }
+    </script>
+</body>
+</html>

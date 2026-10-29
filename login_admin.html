@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - TiketKeretaApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="bilah-navigasi">
+            <div class="wadah">
+                <div class="logo">
+                    <a href="index.html">TiketKeretaApp</a>
+                </div>
+                <div class="tautan-navigasi">
+                    <a href="index.html">Beranda</a>
+                    <a href="login_admin.html">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="halaman-login">
+            <div class="konten-login">
+                <h2>Login Admin</h2>
+                <form action="submit_login_admin.php" method="POST" id="formLoginAdmin">
+                    <div class="form-group">
+                        <label for="nama">Username:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kataSandi">Password:</label>
+                        <input type="password" id="kataSandi" name="kataSandi" required>
+                    </div>
+                    <button type="submit" class="tombol-login">Login</button>
+                </form>
+                <p><a href="login.html">Login sebagai penumpang</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

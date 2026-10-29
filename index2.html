@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiket Kereta Api</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="bilah-navigasi">
+            <div class="wadah">
+                <div class="logo">
+                    <a href="index.html">TiketKeretaApp</a>
+                </div>
+                <div class="tautan-navigasi">
+                    <a href="index2.html">Beranda</a>
+                    <a href="pesan_tiket.html">Pesan Tiket</a>
+                    <a href="#" class="logout-link">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-wadah">
+            <h1>Selamat Datang di TiketKeretaApp</h1>
+            <p>Pesan tiket kereta api dengan mudah dan cepat.</p>
+            <a href="pesan_tiket.html" class="tombol">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <article class="informasi">
+        <h2>Kenapa Memilih Kami?</h2>
+        <p>Kami menyediakan layanan pemesanan tiket kereta api yang cepat, mudah, dan aman. Nikmati perjalanan Anda dengan berbagai pilihan kereta dan kelas yang sesuai dengan kebutuhan Anda.</p>
+    </article>
+
+    <aside class="promo">
+        <h2>Promo Terbaru</h2>
+        <p>Diskon hingga 20% untuk pemesanan tiket pertama Anda! Gunakan kode promo: FIRST20</p>
+    </aside>
+
+    <footer class="footer">
+        <div class="kontak">
+            <h2>Kontak Kami</h2>
+            <p>Email: support@tiketkeretaapp.com</p>
+            <p>Telepon: 0800-123-4567</p>
+        </div>
+        <div class="sosial-media">
+            <h2>Ikuti Kami</h2>
+            <a href="">Facebook</a>
+            <a href="">Twitter</a>
+            <a href="">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Optional: Include a JavaScript file for additional interactivity -->
+    <script>
+        const logoutLink = document.querySelector('.logout-link');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            const userConfirmed = confirm('Apakah Anda yakin ingin logout?');
+            if (userConfirmed) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userRole');
+                window.location.href = 'index.html';
+            }
+        });
+    }
+    </script>
+</body>
+</html>

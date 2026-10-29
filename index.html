@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiket Kereta Api</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="bilah-navigasi">
+            <div class="wadah">
+                <div class="logo">
+                    <a href="index.html">TiketKeretaApp</a>
+                </div>
+                <div class="tautan-navigasi">
+                    <a href="index.html">Beranda</a>
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-wadah">
+            <h1>Selamat Datang di TiketKeretaApp</h1>
+            <p>Pesan tiket kereta api dengan mudah dan cepat.</p>
+            <a href="" id="pesan-sekarang" class="tombol">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <article class="informasi">
+        <h2>Kenapa Memilih Kami?</h2>
+        <p>Kami menyediakan layanan pemesanan tiket kereta api yang cepat, mudah, dan aman. Nikmati perjalanan Anda dengan berbagai pilihan kereta dan kelas yang sesuai dengan kebutuhan Anda.</p>
+    </article>
+
+    <aside class="promo">
+        <h2>Promo Terbaru</h2>
+        <p>Diskon hingga 20% untuk pemesanan tiket pertama Anda! Gunakan kode promo: FIRST20</p>
+    </aside>
+
+    <footer class="footer">
+        <div class="kontak">
+            <h2>Kontak Kami</h2>
+            <p>Email: support@tiketkeretaapp.com</p>
+            <p>Telepon: 0800-123-4567</p>
+        </div>
+        <div class="sosial-media">
+            <h2>Ikuti Kami</h2>
+            <a href="">Facebook</a>
+            <a href="">Twitter</a>
+            <a href="">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Opsional: Sertakan file JavaScript untuk interaktivitas tambahan -->
+    <script>
+            // logika tombol pesan sekarang ke login
+    const pesanSekarangButton = document.getElementById('pesan-sekarang');
+    if (pesanSekarangButton) {
+        pesanSekarangButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Silakan login terlebih dahulu untuk memesan tiket.')) {
+                window.location.href = 'login.html';
+            }
+        });
+    }
+    </script>
+</body>
+</html>

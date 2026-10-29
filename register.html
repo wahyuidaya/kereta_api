@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi - TiketKeretaApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="bilah-navigasi">
+            <div class="wadah">
+                <div class="logo">
+                    <a href="index.html">TiketKeretaApp</a>
+                </div>
+                <div class="tautan-navigasi">
+                    <a href="index.html">Beranda</a>
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="halaman-register">
+            <div class="konten-register">
+                <h2>Daftar Akun</h2>
+                <form action="submit_register.php" method="POST" id="formRegister">
+                    <div class="form-group">
+                        <label for="nama">Username:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kataSandi">Password:</label>
+                        <input type="password" id="kataSandi" name="kataSandi" required>
+                    </div>
+                    <button type="submit" class="tombol-register">Daftar</button>
+                </form>
+                <p>Sudah punya akun? <a href="login.html">Login disini</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('formRegister').addEventListener('submit', function(event) {
+            // Validasi formulir di sisi klien
+            var nama = document.getElementById('nama').value;
+            var email = document.getElementById('email').value;
+            var kataSandi = document.getElementById('kataSandi').value;
+            
+            if (nama.trim() === '' || email.trim() === '' || kataSandi.trim() === '') {
+                event.preventDefault();
+                alert('Semua kolom harus diisi!');
+            }
+
+            // Asumsikan pendaftaran berhasil
+        alert('Pendaftaran berhasil! Lanjut ke halaman login.');
+        window.location.href = 'login.html'; // Mengarahkan ke halaman login
+
+        });
+    </script>
+</body>
+</html>

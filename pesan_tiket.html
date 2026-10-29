@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>PEMESANAN TIKET KERETA API</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="bilah-navigasi">
+            <div class="wadah">
+                <div class="logo">
+                    <a href="index.html">TiketKeretaApp</a>
+                </div>
+                <div class="tautan-navigasi">
+                    <a href="index2.html">Beranda</a>
+                    <a href="pesan_tiket.html">Pesan Tiket</a>
+                    <a href="#" class="logout-link">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="pesan-tiket">
+        <div class="frame">
+            <h2 class="judul-frame1">PEMESANAN TIKET</h2>
+            <form method="POST" action="simpan_pemesanan.php">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="nama">Nama Pemesan:</label>
+                        <input type="text" id="nama" name="nama" required><br>
+
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" required><br>
+                        
+                        <label for="telepon">No. Telepon:</label>
+                        <input type="text" id="telepon" name="telepon" required><br>
+
+                        <label for="alamat">Alamat:</label>
+                        <input type="text" id="alamat" name="alamat" required><br>
+
+                        <label for="tujuan">Tujuan:</label>
+                        <select id="tujuan" name="tujuan" required>
+                            <option value="" selected disabled>Pilih</option>
+                            <option value="Jakarta - Bandung">Jakarta - Bandung</option>
+                            <option value="Jakarta - Yogyakarta">Jakarta - Yogyakarta</option>
+                            <option value="Jakarta - Semarang">Jakarta - Semarang</option>
+                            <option value="Jakarta - Surabaya">Jakarta - Surabaya</option>
+                        </select><br>
+                    </div>
+
+                    <div class="form-column">
+                        <label for="kelas">Kelas:</label>
+                        <select id="kelas" name="kelas" required>
+                            <option value="" selected disabled>Pilih</option>
+                            <option value="Ekonomi">Ekonomi</option>
+                            <option value="Bisnis">Bisnis</option>
+                            <option value="Eksekutif">Eksekutif</option>
+                        </select><br>
+                        
+                        <label for="tgl_keberangkatan">Tgl Keberangkatan:</label>
+                        <input type="date" id="tgl_keberangkatan" name="tgl_keberangkatan" required><br>
+                        
+                        <label for="jam_keberangkatan">Jam Keberangkatan:</label>
+                        <select id="jam_keberangkatan" name="jam_keberangkatan" required>
+                            <option value="" selected disabled>Pilih</option>
+                            <option value="08:00">08:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="20:00">20:00</option>
+                        </select><br>
+
+                        <label for="tempat_duduk">Tempat Duduk:</label>
+                        <select id="tempat_duduk" name="tempat_duduk" required>
+                            <option value="" selected disabled>Pilih</option>
+                            <option value="1A">1A</option>
+                            <option value="1B">1B</option>
+                            <option value="2A">2A</option>
+                            <option value="2B">2B</option>
+                            <option value="3A">3A</option>
+                            <option value="3B">3B</option>
+                            <option value="4A">4A</option>
+                            <option value="4B">4B</option>
+                            <option value="5A">5A</option>
+                            <option value="5B">5B</option>
+                        </select><br>
+
+                        
+                        <label for="harga">Harga Tiket:</label>
+                        <input type="text" id="harga" name="harga" readonly><br>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="submit" id="pesanTiketBtn">PESAN</button>
+                    <button type="button" id="hapusFormBtn">HAPUS</button>
+                    <button type="button" id="keluarBtn">KEMBALI</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Event listener untuk memperbarui harga saat memilih kelas atau tujuan
+document.getElementById('kelas').addEventListener('change', updateHarga);
+document.getElementById('tujuan').addEventListener('change', updateHarga);
+
+// Fungsi untuk memperbarui harga tiket
+function updateHarga() {
+    var tujuan = document.getElementById('tujuan').value;
+    var kelas = document.getElementById('kelas').value;
+    var hargaTiket = 0;
+
+    switch (tujuan) {
+        case 'Jakarta - Bandung':
+            switch (kelas) {
+                case 'Ekonomi':
+                    hargaTiket = 200000;
+                    break;
+                case 'Bisnis':
+                    hargaTiket = 300000;
+                    break;
+                case 'Eksekutif':
+                    hargaTiket = 400000;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 'Jakarta - Yogyakarta':
+            switch (kelas) {
+                case 'Ekonomi':
+                    hargaTiket = 220000;
+                    break;
+                case 'Bisnis':
+                    hargaTiket = 320000;
+                    break;
+                case 'Eksekutif':
+                    hargaTiket = 420000;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 'Jakarta - Semarang':
+            switch (kelas) {
+                case 'Ekonomi':
+                    hargaTiket = 250000;
+                    break;
+                case 'Bisnis':
+                    hargaTiket = 350000;
+                    break;
+                case 'Eksekutif':
+                    hargaTiket = 450000;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 'Jakarta - Surabaya':
+            switch (kelas) {
+                case 'Ekonomi':
+                    hargaTiket = 280000;
+                    break;
+                case 'Bisnis':
+                    hargaTiket = 380000;
+                    break;
+                case 'Eksekutif':
+                    hargaTiket = 480000;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById('harga').value = hargaTiket.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+}
+
+// Event listener untuk tombol "PESAN"
+document.getElementById('pesanTiketBtn').addEventListener('click', function() {
+    // Validasi input
+    var nama = document.getElementById('nama').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var telepon = document.getElementById('telepon').value.trim();
+    var alamat = document.getElementById('alamat').value.trim();
+    var tujuan = document.getElementById('tujuan').value; // Mengambil nilai dari dropdown Tujuan
+    var kelas = document.getElementById('kelas').value;
+    var tglKeberangkatan = document.getElementById('tgl_keberangkatan').value.trim();
+    var jamKeberangkatan = document.getElementById('jam_keberangkatan').value;
+    var tempatDuduk = document.getElementById('tempat_duduk').value;
+    var hargaTiket = document.getElementById('harga').value;
+
+    // Validasi tambahan untuk email, tujuan, dan harga tiket
+    if (!nama || !email || !telepon || !alamat || !tujuan || !kelas || !tglKeberangkatan || !jamKeberangkatan || !tempatDuduk || !hargaTiket) {
+        alert('Mohon lengkapi semua kolom yang tersedia.');
+        return;
+    }
+
+    // Simpan data ke localStorage
+    localStorage.setItem('namaPenumpang', nama);
+    localStorage.setItem('emailPenumpang', email);
+    localStorage.setItem('teleponPenumpang', telepon);
+    localStorage.setItem('alamatPenumpang', alamat);
+    localStorage.setItem('tujuan', tujuan); // Simpan nilai dropdown Tujuan
+    localStorage.setItem('kelas', kelas);
+    localStorage.setItem('tglKeberangkatan', tglKeberangkatan);
+    localStorage.setItem('jamKeberangkatan', jamKeberangkatan);
+    localStorage.setItem('tempatDuduk', tempatDuduk);
+    localStorage.setItem('hargaTiket', hargaTiket);
+
+    // Konfirmasi pesanan berhasil
+    alert('Tiket berhasil dipesan! Lanjut ke halaman Cetak Tiket');
+    
+    // Redirect ke halaman karcis_tiket.html
+    window.location.href = 'karcis_tiket.html';
+});
+
+// Event listener untuk tombol "HAPUS"
+document.getElementById('hapusFormBtn').addEventListener('click', function() {
+    // Konfirmasi sebelum menghapus
+    var konfirmasi = confirm('Apakah Anda yakin ingin menghapus semua data yang telah dimasukkan?');
+
+    if (konfirmasi) {
+        // Hapus semua input
+        document.getElementById('nama').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('telepon').value = '';
+        document.getElementById('alamat').value = '';
+        document.getElementById('tujuan').selectedIndex = 0;
+        document.getElementById('kelas').selectedIndex = 0;
+        document.getElementById('tgl_keberangkatan').value = '';
+        document.getElementById('jam_keberangkatan').selectedIndex = 0;
+        document.getElementById('tempat_duduk').selectedIndex = 0;
+        document.getElementById('harga').value = '';
+    }
+});
+
+// Event listener untuk tombol "KELUAR"
+document.getElementById('keluarBtn').addEventListener('click', function() {
+    // Konfirmasi sebelum keluar
+    var konfirmasi = confirm('Apakah Anda yakin ingin keluar dari halaman ini? Semua data yang belum disimpan akan hilang.');
+
+    if (konfirmasi) {
+        // Redirect ke halaman index.html
+        window.location.href = 'index2.html';
+    }
+});
+
+// Memanggil fungsi updateHarga saat halaman dimuat untuk pertama kali
+updateHarga();
+
+const logoutLink = document.querySelector('.logout-link');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            const userConfirmed = confirm('Apakah Anda yakin ingin logout?');
+            if (userConfirmed) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userRole');
+                window.location.href = 'index.html';
+            }
+        });
+    }
+    </script>
+    
+</body>
+</html>
