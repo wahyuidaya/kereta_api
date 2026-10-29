@@ -17,9 +17,18 @@
                     <a href="index.html">Beranda</a>
                     <a href="login_admin.html">Login</a>
                 </div>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <a href="index.html" onclick="toggleMobileMenu()">Beranda</a>
+        <a href="login_admin.html" onclick="toggleMobileMenu()">Login Admin</a>
+    </div>
+    <script>function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }</script>
     
     <main>
         <section class="halaman-login">

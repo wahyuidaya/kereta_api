@@ -18,9 +18,18 @@
                     <a href="pesan_tiket.html">Pesan Tiket</a>
                     <a href="#" class="logout-link">Logout</a>
                 </div>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <a href="index2.html" onclick="toggleMobileMenu()">Beranda</a>
+        <a href="pesan_tiket.html" onclick="toggleMobileMenu()">Pesan Tiket</a>
+        <a href="#" class="logout-link" onclick="toggleMobileMenu()">Logout</a>
+    </div>
 
     <section class="hero">
         <div class="hero-wadah">
@@ -54,9 +63,9 @@
         </div>
     </footer>
 
-    <!-- Optional: Include a JavaScript file for additional interactivity -->
     <script>
-        const logoutLink = document.querySelector('.logout-link');
+    function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }
+    const logoutLink = document.querySelector('.logout-link');
     if (logoutLink) {
         logoutLink.addEventListener('click', function(event) {
             event.preventDefault();

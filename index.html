@@ -18,9 +18,18 @@
                     <a href="login.html">Login</a>
                     <a href="register.html">Register</a>
                 </div>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <a href="index.html" onclick="toggleMobileMenu()">Beranda</a>
+        <a href="login.html" onclick="toggleMobileMenu()">Login</a>
+        <a href="register.html" onclick="toggleMobileMenu()">Register</a>
+    </div>
 
     <section class="hero">
         <div class="hero-wadah">
@@ -54,9 +63,8 @@
         </div>
     </footer>
 
-    <!-- Opsional: Sertakan file JavaScript untuk interaktivitas tambahan -->
     <script>
-            // logika tombol pesan sekarang ke login
+    function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }
     const pesanSekarangButton = document.getElementById('pesan-sekarang');
     if (pesanSekarangButton) {
         pesanSekarangButton.addEventListener('click', function(event) {

@@ -18,9 +18,19 @@
                     <a href="login.html">Login</a>
                     <a href="register.html">Register</a>
                 </div>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <a href="index.html" onclick="toggleMobileMenu()">Beranda</a>
+        <a href="login.html" onclick="toggleMobileMenu()">Login</a>
+        <a href="register.html" onclick="toggleMobileMenu()">Register</a>
+    </div>
+    <script>function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }</script>
     
     <main>
         <section class="halaman-login">
@@ -42,9 +52,5 @@
             </div>
         </section>
     </main>
-
-    <script>
-
-    </script>
 </body>
 </html>

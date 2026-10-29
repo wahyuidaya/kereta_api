@@ -18,9 +18,19 @@
                     <a href="login.html">Login</a>
                     <a href="register.html">Register</a>
                 </div>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <a href="index.html" onclick="toggleMobileMenu()">Beranda</a>
+        <a href="login.html" onclick="toggleMobileMenu()">Login</a>
+        <a href="register.html" onclick="toggleMobileMenu()">Register</a>
+    </div>
+    <script>function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }</script>
     
     <main>
         <section class="halaman-register">
@@ -48,7 +58,6 @@
 
     <script>
         document.getElementById('formRegister').addEventListener('submit', function(event) {
-            // Validasi formulir di sisi klien
             var nama = document.getElementById('nama').value;
             var email = document.getElementById('email').value;
             var kataSandi = document.getElementById('kataSandi').value;
@@ -57,11 +66,6 @@
                 event.preventDefault();
                 alert('Semua kolom harus diisi!');
             }
-
-            // Asumsikan pendaftaran berhasil
-        alert('Pendaftaran berhasil! Lanjut ke halaman login.');
-        window.location.href = 'login.html'; // Mengarahkan ke halaman login
-
         });
     </script>
 </body>
