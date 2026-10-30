@@ -1,23 +1,19 @@
 <?php
 session_start();
 
-// Nama pengguna dan kata sandi default untuk admin
 $admin_username = "Admin";
 $admin_password = "Admin123";
 
-// Mendapatkan data dari form login
-$nama = $_POST['nama'];
-$kataSandi = $_POST['kataSandi'];
+$nama = trim($_POST['nama'] ?? '');
+$kataSandi = trim($_POST['kataSandi'] ?? '');
 
-// Memeriksa kredensial
-if ($nama === $admin_username && $kataSandi === $admin_password) {
-    // Kredensial benar, login berhasil
+if (strcasecmp($nama, $admin_username) === 0 && $kataSandi === $admin_password) {
     $_SESSION['admin_logged_in'] = true;
-    header("Location: index2.html");
+    $_SESSION['admin_username'] = 'Admin';
+    header("Location: dashboard_admin.php");
     exit;
 } else {
-    // Kredensial salah, login gagal
     $_SESSION['error_message'] = "Nama pengguna atau kata sandi salah";
-    header("Location: login_admin.html");
+    header("Location: login_admin.html?error=1");
     exit;
 }

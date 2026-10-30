@@ -19,9 +19,18 @@
                     <a href="pesan_tiket.html">Pesan Tiket</a>
                     <a href="#" class="logout-link">Logout</a>
                 </div>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <a href="index2.html" onclick="toggleMobileMenu()">Beranda</a>
+        <a href="pesan_tiket.html" onclick="toggleMobileMenu()">Pesan Tiket</a>
+        <a href="#" class="logout-link" onclick="toggleMobileMenu()">Logout</a>
+    </div>
     <div class="pesan-tiket">
         <div class="frame">
             <h2 class="judul-frame1">PEMESANAN TIKET</h2>
@@ -252,18 +261,18 @@ document.getElementById('keluarBtn').addEventListener('click', function() {
 // Memanggil fungsi updateHarga saat halaman dimuat untuk pertama kali
 updateHarga();
 
-const logoutLink = document.querySelector('.logout-link');
-    if (logoutLink) {
-        logoutLink.addEventListener('click', function(event) {
+function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }
+    document.querySelectorAll('.logout-link').forEach(function(el) {
+        el.addEventListener('click', function(event) {
             event.preventDefault();
             const userConfirmed = confirm('Apakah Anda yakin ingin logout?');
             if (userConfirmed) {
                 localStorage.removeItem('isLoggedIn');
                 localStorage.removeItem('userRole');
-                window.location.href = 'index.html';
+                window.location.href = 'logout.php?to=portal.html';
             }
         });
-    }
+    });
     </script>
     
 </body>

@@ -65,18 +65,17 @@
 
     <script>
     function toggleMobileMenu(){ document.getElementById("mobileMenu").classList.toggle("open"); }
-    const logoutLink = document.querySelector('.logout-link');
-    if (logoutLink) {
-        logoutLink.addEventListener('click', function(event) {
+    document.querySelectorAll('.logout-link').forEach(function(el) {
+        el.addEventListener('click', function(event) {
             event.preventDefault();
             const userConfirmed = confirm('Apakah Anda yakin ingin logout?');
             if (userConfirmed) {
                 localStorage.removeItem('isLoggedIn');
                 localStorage.removeItem('userRole');
-                window.location.href = 'index.html';
+                window.location.href = 'logout.php?to=portal.html';
             }
         });
-    }
+    });
     </script>
 </body>
 </html>
