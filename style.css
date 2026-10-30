@@ -160,7 +160,9 @@
 /*------------------------------------------ Responsif ---------------------------------*/
 @media (max-width: 768px) {
     .bilah-navigasi .wadah {
-        flex-direction: column;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
     }
 
     .bilah-navigasi .tautan-navigasi {
@@ -591,9 +593,19 @@
 
 /* Improved mobile nav for Kereta Api */
 @media (max-width: 768px) {
-  .bilah-navigasi .wadah { flex-wrap: wrap; }
-  .bilah-navigasi .tautan-navigasi { display: none; }
-  .hamburger { display: flex; }
+  .bilah-navigasi .wadah {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 1.2em !important;
+  }
+  .bilah-navigasi .tautan-navigasi { display: none !important; }
+  .hamburger {
+    display: flex !important;
+    margin-left: auto !important;
+  }
 
   .hero { padding: 2em 1em; height: auto; min-height: 100vh; }
   .hero h1 { font-size: 1.8em; }
