@@ -40,7 +40,10 @@ if (file_exists($fullPath)) {
         if (in_array($filename, ['login.html', 'login_admin.html', 'index.html'])) {
             // Banner dengan relative z-index agar TIDAK tertutup fixed header/navbar
             $banner = '<div style="position:relative;z-index:1001;background:#1e3a5f;color:#fff;padding:12px 20px;text-align:center;font-size:13.5px;line-height:1.7;">'
-                . '<a href="https://wahyuidaya.github.io" style="display:inline-block;margin-bottom:6px;color:#90cdf4;text-decoration:none;font-weight:600;font-size:13px;">← Kembali ke Portofolio Wahyu Idaya</a><br>';
+                . '<div style="margin-bottom:6px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">'
+                . '<a href="portal.html" style="color:#6ee7b7;font-weight:700;text-decoration:none;">← Kembali ke Portal Tiket Kereta</a>'
+                . '<a href="https://wahyuidaya.github.io" style="color:#90cdf4;text-decoration:none;font-weight:600;">Portofolio Wahyu Idaya ↗</a>'
+                . '</div>';
             if ($filename === 'login.html') {
                 $banner .= '<strong style="color:#fbd38d;">🔐 Demo User:</strong> Username: <strong>Demo User</strong> | Password: <strong>user123</strong> '
                     . '<button type="button" onclick="document.getElementById(\'nama\').value=\'Demo User\';document.getElementById(\'kataSandi\').value=\'user123\';" style="margin-left:8px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:4px;padding:3px 8px;cursor:pointer;font-size:12px;">Pakai</button>';
@@ -48,9 +51,20 @@ if (file_exists($fullPath)) {
                 $banner .= '<strong style="color:#fbd38d;">🔐 Demo Admin:</strong> Username: <strong>Admin</strong> | Password: <strong>Admin123</strong> '
                     . '<button type="button" onclick="document.getElementById(\'nama\').value=\'Admin\';document.getElementById(\'kataSandi\').value=\'Admin123\';" style="margin-left:8px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:4px;padding:3px 8px;cursor:pointer;font-size:12px;">Pakai</button>';
             } elseif ($filename === 'index.html') {
-                $banner .= '<strong style="color:#fbd38d;">Demo App</strong> — <a href="login.html" style="color:#90cdf4;">Login User</a> | <a href="login_admin.html" style="color:#90cdf4;">Login Admin</a>';
+                $banner .= '<strong style="color:#fbd38d;">Demo App</strong> — <a href="portal.html" style="color:#6ee7b7;font-weight:700;">Buka Halaman Portal</a> | <a href="login.html" style="color:#90cdf4;">Login User</a> | <a href="login_admin.html" style="color:#90cdf4;">Login Admin</a>';
             }
             $banner .= '</div>';
+            // Tambahkan script autofill dari url demo parameter
+            $banner .= '<script>window.addEventListener("DOMContentLoaded", function() {
+                var p = new URLSearchParams(window.location.search);
+                var d = p.get("demo");
+                var u = document.getElementById("nama");
+                var pw = document.getElementById("kataSandi");
+                if (u && pw) {
+                    if (d === "penumpang") { u.value = "Demo User"; pw.value = "user123"; }
+                    else if (d === "admin") { u.value = "Admin"; pw.value = "Admin123"; }
+                }
+            });</script>';
             // Tambahkan style agar header di bawah banner tidak menimpa banner
             $banner .= '<style>.bilah-navigasi { position: relative !important; top: 0 !important; } main { margin-top: 10px !important; }</style>';
             $html = str_replace('<body>', '<body>' . $banner, $html);
