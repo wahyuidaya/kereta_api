@@ -484,30 +484,75 @@ $resUser = $conn->query("SELECT * FROM Login_Pengguna ORDER BY ID_Pengguna DESC"
             background: #1D4ED8;
         }
 
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .sidebar-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.5);
+            z-index: 999;
+        }
+        .sidebar-backdrop.open { display: block; }
+        .table-scroll-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         @media (max-width: 768px) {
-            .admin-layout {
-                flex-direction: column;
-            }
+            html, body { overflow-x: hidden; max-width: 100vw; }
+            .mobile-menu-btn { display: inline-flex; }
+            .admin-layout { flex-direction: column; max-width: 100vw; }
             .admin-sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #E2E8F0;
-                padding: 12px;
-                display: flex;
-                flex-direction: row;
-                overflow-x: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 260px;
+                height: 100dvh;
+                max-height: 100dvh;
+                overflow-y: auto;
+                background: #FFFFFF;
+                z-index: 1000;
+                transform: translateX(-100%);
+                transition: transform 0.25s ease;
+                box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+                padding: 20px 14px 32px;
             }
+            .admin-sidebar.open { transform: translateX(0); }
             .admin-content {
-                padding: 18px 16px;
+                padding: 18px 14px;
+                width: 100%;
+                max-width: 100vw;
+                min-width: 0;
             }
+            .nav-brand-text span { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleAdminSidebar()"></div>
+
     <!-- Top Navbar -->
     <header class="top-navbar">
         <div class="nav-brand">
+            <button type="button" class="mobile-menu-btn" onclick="toggleAdminSidebar()" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
             <div class="nav-logo-icon">
                 <i class="fa-solid fa-train"></i>
             </div>
@@ -517,12 +562,6 @@ $resUser = $conn->query("SELECT * FROM Login_Pengguna ORDER BY ID_Pengguna DESC"
             </div>
         </div>
         <div class="nav-actions">
-            <a href="portal.html" class="btn-portofolio">
-                <i class="fa-solid fa-layer-group"></i> Portal Peran
-            </a>
-            <a href="https://wahyuidaya.github.io" target="_blank" rel="noopener noreferrer" class="btn-portofolio">
-                <i class="fa-solid fa-arrow-left"></i> Portofolio
-            </a>
             <button onclick="logoutAdmin()" class="btn-logout">
                 <i class="fa-solid fa-right-from-bracket"></i> Logout
             </button>
@@ -531,7 +570,7 @@ $resUser = $conn->query("SELECT * FROM Login_Pengguna ORDER BY ID_Pengguna DESC"
 
     <div class="admin-layout">
         <!-- Sidebar Navigation -->
-        <aside class="admin-sidebar">
+        <aside class="admin-sidebar" id="adminSidebar">
             <span class="sidebar-section-title">Menu Utama</span>
             <a href="dashboard_admin.php?tab=ringkasan" class="sidebar-link <?= $tab === 'ringkasan' ? 'active' : '' ?>">
                 <i class="fa-solid fa-gauge"></i> Ringkasan &amp; Statistik
@@ -878,6 +917,10 @@ $resUser = $conn->query("SELECT * FROM Login_Pengguna ORDER BY ID_Pengguna DESC"
     </div>
 
     <script>
+        function toggleAdminSidebar() {
+            document.getElementById('adminSidebar').classList.toggle('open');
+            document.getElementById('sidebarBackdrop').classList.toggle('open');
+        }
         function logoutAdmin() {
             if (confirm('Apakah Anda yakin ingin logout dari Dashboard Admin?')) {
                 localStorage.removeItem('isLoggedIn');
