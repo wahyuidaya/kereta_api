@@ -52,5 +52,14 @@
             </div>
         </section>
     </main>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('demo') === 'penumpang') {
+          document.getElementById('nama').value = 'Demo User';
+          document.getElementById('kataSandi').value = 'user123';
+        }
+      });
+    </script>
 </body>
 </html>

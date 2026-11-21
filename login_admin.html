@@ -49,5 +49,14 @@
             </div>
         </section>
     </main>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('demo') === 'admin') {
+          document.getElementById('nama').value = 'admin';
+          document.getElementById('kataSandi').value = 'admin123';
+        }
+      });
+    </script>
 </body>
 </html>
