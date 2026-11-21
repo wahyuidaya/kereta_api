@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
         $_SESSION['user_logged_in'] = true;
         $_SESSION['nama_pemesan'] = 'Demo User';
-        header("Location: index2.html");
+        header("Location: pesan_tiket.html");
         exit;
     }
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['user_logged_in'] = true;
                 $_SESSION['nama_pemesan'] = $row['Nama_Pemesan'];
-                header("Location: index2.html");
+                header("Location: pesan_tiket.html");
                 exit;
             }
         }
